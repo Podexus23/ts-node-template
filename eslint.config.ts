@@ -6,12 +6,7 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    ignores: [
-      "**/package-lock.json",
-      "**/tsconfig.json",
-      "**/vitest.config.ts",
-      "**/*.config.ts",
-    ],
+    ignores: ["dist/", "coverage/"],
   },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
@@ -19,20 +14,16 @@ export default defineConfig([
     extends: ["js/recommended"],
     languageOptions: {
       globals: globals.node,
-      parserOptions: {
-        project: true,
-      },
     },
   },
-  ...tseslint.configs.recommended,
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: ["src/**/*.ts"],
+    extends: [...tseslint.configs.recommendedTypeChecked],
     languageOptions: {
       parserOptions: {
         project: true,
       },
     },
-    extends: [...tseslint.configs.recommendedTypeChecked],
   },
   eslintConfigPrettier,
 ]);
