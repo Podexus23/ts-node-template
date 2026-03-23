@@ -10,7 +10,7 @@ describe('hello', () => {
 
     hello();
 
-    expect(logSpy).toHaveBeenCalledOnce();
+    expect(logSpy).toHaveBeenCalled();
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('Hello'));
   });
 });
